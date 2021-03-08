@@ -1,0 +1,490 @@
+React js installation - 1- Download nodejs 
+                        2- go to CMD and npm install -g create-react-app
+                        3- create-react-app Project_name    // everytime we create a new Project_name
+
+To run the server we need to go inside the app in CMD and type " npm start ".
+
+react is for single page websites.
+
+index.html has " <noscript>You need to enable JavaScript to run this app.</noscript> " this will popup a message when user has
+disabled the JavaScript.
+
+ReactDOM.render('What to show','Where to show',callback);    
+    example - ReactDOM.render( <h1>Hello  world!!!!</h1>, document.getElementById('root'));
+
+webpack  - creates a bundle of all files.
+Babel - our browser don't understand modern JavaScript , so Babel makes it browserfriendly.
+
+JSX - JavaScript extension or JavaScript XML
+
+// HOW TO RENDER MULTIPLE ELEMENTS  - 
+render method takes only one element.So 
+METHOD 1 -  we can wrap MULTIPLE elements in one tag like a "div".
+            <div>
+                <h1> Hello world !!</h1>
+                <p> Good Morning.</p>
+            </div>
+
+METHOD 2 -  We can create an array ( works in version 16 +)
+            ReactDOM.render( [<h1>Hello  world!!!!</h1>,
+                              <p>Good Morning</p>], document.getElementById('root'));
+
+
+// REACT FRAGMENT - 
+when we were using 'div' to render MULTIPLE elements then there was an extra node created in HTML file,
+So we use <React.fragment></React.fragment> and we can make mistake in this so there is another way that is called sugar form of 
+React.fragment that is  <> your elements </>
+
+//JSX EXPRESSION -on the statements like - if~else.
+NOTE - This will work on expressions only not 
+ex 1 )-   const fname = "Abhishek"
+        <h1>Thses are some of my ({fname}) fav movies </h1>
+
+ex 2 )-   <p>{Math.random()}</p>
+
+//ES6 TEMPLATE LITERALS - 
+To use more then one var in our code - 
+<h2>{`My name is ${fname} ${lname}`}</h2>
+
+//DISPLAY CURRENT DATE AND TIME -
+function dat(){
+  var d = new Date();
+  const date = d.getDate()+"/"+d.getMonth()+"/"+d.getFullYear();
+  return date;
+}
+function tim(){
+  var t = new Date();
+  const time = t.getHours()+":"+t.getMinutes()+":"+t.getSeconds();
+  return time;
+
+}
+
+in the render fn :
+    <h2>{`Today's date is ${dat()} and time now is ${tim()}`}</h2>
+
+This was one long way.
+short way :
+
+const d = new Date().toLocalDateString();  // Similir for time
+and use d in RENDER
+
+
+//JSX ATTRIBUTES IN REACT - 
+like in HTML 'href' is a attribute .
+When these are used in JSX they are called JSX attributes.
+
+in case of JSX we have to use camel case - 
+    for ex:- <h1 contenteditable = "True" >My name is abhishek </h1>    // in  case of HTML.
+             <h1 contentEditable = "True" >My name is abhishek </h1>    // JSX (e of editable is capital)
+
+             <img src = "urls" alt = "random" />                         // self closing tag
+
+
+//STYLING( CSS ) IN REACT - 
+import './index.css'
+
+now in any tag that we want to style we need to write 'className' instead of 'class' as we used in normal CSS.
+
+
+//HOW TO ADD GOOGLE FONTS IN REACT - 
+copy the link and paste it to .html file . and then use the font-family liike we did in CSS
+
+
+//INLINE STYLING IN REACT - 
+we use it in react frequently.
+for ex )- 
+            const header = {                                    //This is an object that we craeted in index .js 
+                color: " Yellow",
+                textTransform: "capitalize",
+                textAlign: "center"
+
+            }
+
+        in render fn :
+
+            <h1 style = {header}> My name is abhishek  </h1>
+
+
+// Functional Component in React (most imp)
+This is in index.js : 
+
+import Heading from './Heading';
+import List from  './List';
+
+ReactDOM.render(<>
+              <Heading/>
+</> , document.getElementById('root'));
+
+Create another file in src with Component name with first letter as capital.
+And do this in that file :
+
+import React from 'react';
+
+function Heading(){
+    return <h1>My name is Abhishek !!!</h1>;
+}
+
+export default Heading;
+
+NOTE : This is how Components are created in React.
+
+This is exactly how we can create an app in React.
+
+
+//ARRAY MAPPING METHID IN JS:
+used while looping 
+array.map(function(currentvalue,index,arr),thisvalue)
+
+for example :
+            const arr = [{name:"Abhshek Pratap", class:"12th"},{name:"Shivam Chauhan", class:"10th"}]
+            const newarr = arr.map((cvalue)=>{
+                return `My name is ${cvalue.name}, and i am in ${cvalue.class} `;
+            })
+            console.log(newarr);
+
+            another example - 
+
+                const narr = arr.map((values)=>{
+                return <>
+                        <Card cHeader = {values.cHeader}
+                                cTitle = {values.cTitle}
+                                cText = {values.cText}
+                        />
+                </>
+                });
+
+                reactDOM.render(<><div className= 'row'>{narr}</div></>,document.getElementById('root'));
+
+// ARRAY DESTRUCTURING IN ES6 :
+unpacking values or object properties .
+const myFavLang = ['js','php','python','java'];
+let [top1,top2,top3,top4] = myFavLang;
+
+now every element like top1 , top2 ....  has values individualy as 'js', 'php'.....
+if we want to skip elements of an array then we need to enter number of commas to skip elements.
+
+HOOKS IN REACTJS : -
+----------------------
+It allows you to use state and other react features without writing a class.
+it does not work inside classes.
+hooks should always be used at the top level of the React.
+
+Note :- const App = ()=>{                                        // element App
+        const [count,setCount] = useState(0);                    // count has currentvalue, setcount is function, useState has initial value
+        const IncNum = () =>{                                    // onClick event 
+            setCount(count+ 1);                                  // increment in current value of count
+                            }
+        return(                                                  // returning value to App component.
+            <>
+            <h1>{count}</h1>
+            <button onClick = {IncNum} >Click Me</button>
+            </>
+        );
+        }
+        export default App;
+
+//FORMS IN REACTJS -
+--------------------
+we can use document.getElementById(), but the problem is that is uncontrolled way , so we use this way to do that :
+for exammple if we want to show the data onclick of submit to the display.
+
+const Formcheck = ()=>{
+  const [name,changeName] = useState();
+  const [getname,getName] = useState();
+  
+  const changeText = (someVal) =>{
+    changeName(someVal.target.value);
+  }
+  const changeTitle = (e)=>{
+    e.preventDefault();                                                          // when we submit form autoreload of webpage is there, to stop that we are using this.
+    getName(name);
+}
+return <>
+              <form onSubmit = {changeTitle}>                                     // using form tag 
+              <h2>Hello {getname}</h2>                                            // getname will be responsible to display data on screen
+              <input type='text' onChange = {changeText} value = {name} ></input>    // described at last.
+              
+              <button type = 'submit'>SUBMIT</button>
+              </form>
+        </>
+}
+
+Working : As user enters some data in input , changeText funtion is called and inside that changeName  is called which changes the value of name to whatever is being enterd,
+and when the submit button is pressed, changeTitle fn is called which calls another hook function ie., getName with the name so this is how it works .
+
+//To watch video 36
+
+
+//SPREAD OPERATOR : (THREE DOTS '...'):
+---------------------------------------
+
+const arr1 = [1, "abhsihek","chauhan"];
+const arr2 = [2, ...arr1,"Pratap"];               // this will include the elements of first array as well.
+console.log(arr2);
+
+
+
+
+// How to use Material UI icons in REACT :-
+-------------------------------------------
+-------------------------------------------
+Go to the react project you are working with (in CMD) and do these :
+
+1.    npm install @material-ui/icons
+2.    npm install @material-ui/core
+
+go to google and search for material ui icons :
+
+search the icon you need and copy paste it to the app and use it .
+
+OR  MATERIAL UI CAN BE USED TO CREATE NAVBAR AND ANY OTHER Component LIKE THE BOOTSTRAP.
+-----------------------------------------------------------------------------------------
+with similar steps
+
+
+// What is npm
+-----------------
+
+go to Cmd and whatever you want to add to the project search it on google (for ex. npm react digital clock )
+and then paste the command for ex:
+ 
+npm install react-digital-clock
+and now go to the APP and import it 
+for ex)-
+    import Clock from 'react-digital-clock';
+
+    and then add component  <Clock/> anywhere you want
+
+
+
+//CONTEXT API IN react JS -
+-------------------------
+so lets imagine :
+Parent -> child_1 -> child_2 -> child ->child_3 
+
+so this is the hiericky and if paraent has some props that we want to share to child_3 only then we need to pass to child_2 as well as 
+child_1, and in order to do this wothout passing it to child_2 and child_1, we use CONTEXT API.
+
+three things are req to do so :
+1)- createContext()
+2)- provider
+3)- consummer
+
+This make the program little irritating when there are a lot of data to pass. So here comes useContext :
+
+//useContext :
+---------------
+
+App.jsx : (Parent Page)
+
+const FirstName = createContext();
+const LastName = createContext();
+const App = () => {
+    return(
+        <>
+        <FirstName.Provider value="Abhishek">
+            <LastName.Provider value="Pratap Singh">
+                <Comp1/>
+            </LastName.Provider>
+        </FirstName.Provider>
+        </>
+    );
+
+}
+
+and the Child page in which you want the data :
+
+import {FirstName, LastName} from './App.jsx';
+
+const Comp2 =()=>{
+    const fname = useContext(FirstName);
+    const lname = useContext(LastName);
+
+    return(<><h2>This is from use context ,my name is {fname} {lname}</h2><Comp3/></>);
+}
+
+and this is how useContext works. 
+
+useEffect() hooks-
+------------------
+is another hook that is called after rendering of the page.
+
+AXIOS and useEffect API : (API to get POKEMON):
+-----------------------------------------------
+it must be installed from NPM.
+NOTE : Another option is to fetchAPI to use APIs in React. 
+
+useEffect(()=>{
+        async function getData(){
+            const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${selVal}`); 
+            setName(poke.data.name);
+            setMoves(poke.data.moves.length)
+        }
+        getData();
+    })
+
+
+REACT ROUTER AND SWITCH :
+-------------------------
+Server Side Routing : when we go to different pages of a website and the website reloads.
+Else it is called Client side Routing.
+
+We need to install react-router-dom from NPM.
+
+use this video for revision purpose :
+
+https://www.youtube.com/watch?v=1N_Vh0bRK3c&list=PLwGdqUZWnOp3aROg4wypcRhZqJG3ajZWJ&index=60
+
+example :
+const Main = () =>{
+return(<>
+    <Switch>
+        <Route exact path="/" component = {About}/>                           // these about and contact and Error are components.
+        <Route path="/contact" component = {Contact}/>
+        <Route component = {Error}/>
+    </Switch>
+</>);
+} 
+
+and before using this we need to call our app component inside BrowserRouter component .
+        ReactDOM.render(<BrowserRouter>
+                        <Main/>
+                        </BrowserRouter>,document.getElementById('root'));
+
+
+// This was all that worked with the path 
+
+
+// CREATING NAVBAR USING ROUTER :
+---------------------------------
+Create a new component and import Link from react-router-dom 
+then use link to pass address 
+
+
+const Navbar = () =>{
+    return(<>
+            <Link to="/">About Us</Link>
+            <Link to="/contact">Contact Us</Link>
+    </>);
+}
+
+but this will not have any CSS stying so you can't find actually which link is active.
+SOLUTION :
+----------
+
+import {NavLink} from 'react-router-dom';
+import "./index.css";
+const Navbar = () =>{
+    return(<>
+            <NavLink exact activeClassName="active_class" to="/">About Us</NavLink>
+            <NavLink exact activeClassName="active_class" to="/contact">Contact Us</NavLink>
+    </>);
+}
+
+this active_class can be used to style these link .
+for example :
+    a.active_class{
+    color: red;
+    border-bottom: 1px solid black;
+    text-decoration: none;
+    }
+
+
+// Route RENDER VS route Component PROP:
+----------------------------------
+route component was used in above section .( ie., NavBar)
+
+incase we want to pass props then we need to use render else component is good. but you can use any of them.
+
+Render loads the page in first time and uses it again and again while components reloads the page everytime. (Page = section here)
+
+how to use ?
+
+const Main = () =>{
+return(<>
+    <Navbar/>
+    <Switch>
+        <Route exact path="/" component = {()=>
+            <About name = 'About page'/>                         // using component and props has name.
+        }/>
+        <Route path="/contact" render = {()=>                    // using render 
+            <contact name ="Contact Page "/>
+        }/>
+        <Route component = {Error}/>
+    </Switch>
+</>);
+
+
+// USE PARAMS HOOKS IN REACTJS :
+-------------------------------
+
+it is hook of react router , this is used in case when we want to change data dynamically.
+for ex )- 
+    <Route path="/user/:fname" component = {User}/>    // let this be a route (fname will be changed dynamically).
+
+USer component:
+    const User = ()=>{
+    const { fname } = useParams();                             // can have more than one element 
+    return <h1>This is { fname }</h1>; 
+
+    }
+video link = https://www.youtube.com/watch?v=DpEdnazngBc&list=PLwGdqUZWnOp3aROg4wypcRhZqJG3ajZWJ&index=67
+
+//USELOCATION HOOK IN REACTJS :
+===============================
+this also belongs to reat router dom .
+
+it returns the location object that represents the current URL .
+else you can say it returns data which have the URL and other detials.
+
+example )- 
+    const loc = useLocation();
+    console.log(loc);                  // this will return a data object havinh path and key and other details.
+
+//USEHISTORY HOOKS IN REACTJS :
+-------------------------------
+urls that you have enterd.
+incase if we want to go back to some url we enterd than we can use history.
+
+there are somefucntion in this like goBack() etc . that can be used to navigate to previos URL.
+goBack()   // to move to previous URL.
+push('/homePage')   // to navigate to some page.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+LIVE SEARCH FILTER USING REACT ROUTER AND HOOKS:              (important)
+------------------------------------------------
+in this we have created a app in "Practisetwo" where i've created an app having a search box and when we write any thing in the 
+box it will show an image realted to it. for image we have used API.
+the search box doesnot have any button. we can add a button using useState hook.
+
+//Create React 404 Error Page Not Found using React Router
+-----------------------------------------------------------
+error component should be created.
+and define a route :
+    <Route component = {Error}/>
+to go back button add push button from USEHISTORY hook or we can have a NavLink also.
+
+NOTE: In case we don't wanna show a error page instead we want to display the homePage when the searched page doesn't exists.
+we can use Redirect.
+
+after defining every route, all we need to do is add a line
+    "< Redirect to ="/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+

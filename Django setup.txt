@@ -1,0 +1,65 @@
+                                       HOW TO CREATE A PROJECT IN DJANGO
+				       ---------------------------------
+
+
+
+1. make a folder with proj name in a directory.
+
+2. go to CMD then navigate to the folder created using 'cd' command.
+
+3. type '   py -m venv env      '.          // this will create a vrtual environment with name as 'env'.
+
+4.type  '   env\Scripts\activate   '        // to activate that virtual environment.
+
+5. next type '  pip install django '.       // to install django.
+
+
+
+
+Now we will start our django project .
+
+
+
+6.django-admin startproject myproject      // to create a project.  ( name of the project will be the last word in this command ,ie.., here name is myproject) 
+
+
+7.now go to the project you created by '  cd myproject   '   
+
+8. '      python manage.py migrate    '    // this is the next command and here migrate will create a database for us 
+
+9.'       python manage.py createsuperuser  //  after this put a name and email address and password
+
+10.next command  '   python manage.py runserver   // to run the server 
+
+
+
+this will run the server now all you have to do is to copy the URL from the CMD and paste it on a browser.
+
+
+
+11. now we can go to admin dashboard by  adding '  /admin ' after the URL.
+
+
+
+if you want to end the server hit ' ctrl+c'
+
+
+
+12. you can sign in to admin by the same credentials that you enterd before.
+
+13. python manage.py startapp Helloworld      // this will  create an app named Helloworld.
+
+This is the app that you want to work in .
+
+
+
+
+
+
+
+
+
+
+
+
+

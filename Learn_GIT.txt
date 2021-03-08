@@ -1,0 +1,67 @@
+USING GIT (version control system)-
+------------------------------------
+
+1-   git --version                        // to know if git is in the machine or not.
+
+2-   $ git config --global user.name "Abhishek Pratap Singh Chauhan"
+
+3-   $ git config --global user.email chauhanabhi0098@gmail.com                   // configuring name and email in the GIT.
+
+4-   $ git config --list                              // to check if you are configured or not
+
+5-   now you need to define a flolder in which you will be working in future ...
+     create that folder and through terminal go to that folder and -
+
+6-   $ git init                    // this will make that folder master 
+
+7-   $ git status                  // to check the current ststus of the master
+
+8-   Now add a file for example 'one.html' and then check status ( using $ git status).
+
+9-   $ git add .                   // to add that file to repositry
+
+10-  $ git commit -m "Type your mssg"      // commits the file with a custom message
+
+11-  $ git log                           // to show info about commits ( you can also use "$ git log --oneline "  to view result in one line only)
+
+12-  let's think i made three commits with messages 'first commit', 'second commit', 'third commit' ... and now we want to go back to our previous file ( ex- 'second commit')      
+	STEPS-
+		$ git log --oneline   //this will give you a unique id of all commits.
+		$  git checkout 900cfcf one.html     // to checkout previous version of the file.
+
+13-  We can also go back to third commit by
+		$ git reset HEAD one.html
+		$ git checkout --one.html
+
+14-  To create a repositry online we can use BITBUCKET or GITHUB
+	1-create a new repositry there
+	2-copy the SSH
+	3-Goto console and type-
+		A)-git remote add origin <paste the address here(SSH)>
+
+15-  $ git push -u origin master      // to add the content to the online repository
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          
+
+## How to create packgae .json file and using lite server ?
+
+	1- Open you CMD and go to the folder in which you have created the .html file or in which you want to work.
+	2-$ npm init
+	3- Do all the description asked and hit enter
+	4-your 'package.json' file has been created
+
+# installing 'lite-server' -
+----------------------------
+	1-$ npm install lite-server --save-dev     // A new folder node_modules will be created
+	2-Go to the package.json file and make following changes.
+	3-"scripts": {
+   			 "start":"npm run lite",
+   			 "test": "echo \"Error: no test specified\" && exit 1",
+   			 "lite":"lite-server"
+  			},
+	4-$ npm start    //  to start the lite server
+	
+
+
+	
+ 
