@@ -1,0 +1,55 @@
+CSS - 
+--------
+
+ID - it should be used when you want to access only one element . ex)- <h1> etc
+CLASS - it is used when we are accessing an element having a number of element
+	ex)- <div>
+*{
+margin:0;
+padding:0;                       // to make use of whole page|| also removes unwanted
+}			padding and margins.
+
+-----------------------------------------------------------------------------
+if we want to use a background image to a div:
+
+.div_class{
+ height: 100vh:     // your choice
+ width: 100%;       // your choice
+ background-image: url("link"); 
+ background-repeat: no-repeat;         // to stop it from repeating (both in x and y directions)
+ background-size:100% 100%           // perfect and centered
+ background-attachment: fixed;          // gives a parllex effect (image will be fixed and other
+				tags will move up on scroll)
+ 
+}	
+----------------------------------------------------------------------------------
+text :
+
+letter-spacing:2px;
+word-spacing:5px;
+direction:ltr                                 // left to right
+text-indent: 50px;                       // some space in the starting of text
+text-align: center or right or left;                       // give to a div
+text-transform:uppercase;
+
+------------------------------------------------------------------------------------
+link:
+
+link has :
+
+a:visited{
+
+}
+a:active{
+
+}
+a:hover{
+
+}
+
+------------------------------------------------------------------------------------
+Border:
+
+
+              
+
