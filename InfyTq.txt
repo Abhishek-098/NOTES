@@ -1,0 +1,405 @@
+Python -
+-----------------------------------------------------------------------------------------------------
+List slicing :
+list[1:4]    4 is  not inclusive here 
+
+list[0]*5 means [0,0,0,0,0]
+tuples are immutable but except for assignment they can have everything a list have.
+a ="A","B","C"   this is also a tuple
+String is also immutable.
+
+we can turn a list to a set if we want to have all unique value.
+a= [1,1,1,2.3]
+b = set(a)
+b will be  = [1,2,3]
+
+we can use & to find intersection and  |  to find the union.
+-------------------------------------------
+RANDOM :
+
+import random
+x=10
+y=50
+print(random.randrange(x,y)) 
+
+-----------------------------------------------
+import math
+math.ceil(x)
+math.floor(x)
+math.factorial(x)
+math.fabs(x)
+
+9720809415 - dhumri
+-----------------------------------------------
+import time
+time.gmtime()  // current GM time
+time.localtime()  //current time based on locality
+
+import datetime
+datetime.date.today()   // current local date
+
+
+----------------------------------------------
+Pass by value  vs pass by reference
+- Python is all aiut pass by reference
+
+in python when an immutable var like String or tuple is passed its val remain same after function call too but in function it is different
+
+------------------------------------------------
+ARGUEMENTS - 
+
+default - provides some default value in fn.
+def fn(name,*val):
+ this * val can have 1 or more arguemt and it will be stored in form of tuplle..
+
+// how to change a global var inside a var ??
+
+just put global keyword ( define it again with global keyword)
+--------------------------------------------------
+Try and except in python - 
+def calculate_expenditure(list_of_expenditure):
+    total=0
+    try:
+        for expenditure in list_of_expenditure:
+            total+=expenditure
+        print(total)
+    except:
+        print("Some error occured")
+    print("Returning back from function.")
+
+
+So here in try block we have the method or the formula and in the except we are waiting for error (if any).
+Once the exception is called the prohgram is terminated.
+
+we can have finally: block too after all the excepts and the code written in here will always be executed.
+
+Types of errors :
+ZeroDivisionError - divided by zero
+TypeError - operation on incompatible data types
+NameError - Accessing a var which is not defined
+IndexError - Index is out of range
+ValueError - int(A) this is invalid
+
+-------------------------------------------------
+Recursion  - study again
+
+-------------------------------------------------
+Module and packages -
+
+module is a python file with a .py extension
+Package is a folder that can store many python modules/files , it is __init__.py
+
+-------------------------------------------------
+File Handling in python -
+
+open(file_path,operation)     // to open a file , and opertaion can be r,w,a   (read , write , append)
+close()   // to close an opened file
+write()   // to write a string in file , if file is not present then it will create a file then append the string.
+read()   // to read all content into a string
+
+if a file is opened in read only mode then we can't write in it...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------
+OOP in Python -
+
+Classes are not real , they are just concepts . Objects are real.
+
+How to define  a class :-
+
+class Mobile:
+     pass
+
+How to define an object :-
+    Mobile()
+
+but we need to store these objects in a variabke just like we do normally.
+
+mob1 = Mobile()   // Obj 1
+mob2 = Mobile()   // Onj 2
+
+Even if two objects are similar with same properties but they can not be treated as similar object because they have diff id.
+
+We can create attributes and values ,this is done by using a .(dot) operator
+
+mob1.price = 10000
+
+
+in the same way we can print the values like - 
+print(mob1.brand)
+
+In case we call an attrivute that is not inside a class, we will get an errror 
+-----------------------------------------------
+
+HOW TO ADD ATTRIBUTES TO A CLASS -
+We can add attributes to a class by defining a special function in the class i.e, __init__()
+
+ex)- 
+class Mobile:
+    def __init__(self,brand,price):
+        self.brand  = brand
+        self.price = price
+
+## def objects - 
+mob1 = Mobile("Apple",20000)
+mob2 = Mobile("Samsung",3000)
+
+------------------------------------------------
+Constructor and self  and CREATING ATTRIBUTES - 
+
+when we define or create an object the __init__() function is called automatcically, this is called a constructor.
+self is not a keyword, this refres to current object being executed.
+
+there are two kind of constructor :
+1- parameterless constructor
+2- parameterized constructor 
+
+when the constructor is parameterized , then we can not create an object without giving parameters, throws an error (runtime exception)
+we should creates attributes inside the constructor for the best practice..
+
+self represents the current object ,so both the object and Self have same id .
+
+NOTE : an attribue created without using a self acts as a normal local varibale . 
+
+--------------------------------------------------
+CREATING BEHAVIORS / METHODS  - 
+
+so we can create attributes by adding functions in the class, and they also have self as a parameter.
+
+we can call them using dot operator.
+
+--------------------------------------------------
+   ACCSESSING ATTRIBUTES IN METHODS -
+
+we can acces attributes using self and dot operator.
+
+example -
+let our method be  - 
+ def purchase (self):
+      print("This is what i have ",self.thing)
+
+  
+also we can call a methid inside other method using self.
+--------------------------------------------------
+If we directly print a reference to an object it will return a hex code. (unreadable)
+
+we can use a __str__(self) function and can define it the way we want to show . it will be called automatically as we print the object's reference.
+
+--------------------------------------------------
+Abstraction:
+
+The ability to use something without knowing the details of how it is working, this is callled data abstraction
+
+but it is very easy to change the data , so we use a lock to by putting a double underscore in front of the attribute. by doing this thee attribute becomes private.
+
+Note: if we try to assign a value directly to the private attribute it will not give error but another attribute will be created so data is not changed
+
+--------------------------------------------------
+Encapsulation -
+
+it is just a caution sign , if a variable is private,
+then a developer shoud not access that directly, but if he wants then he can.
+
+setter methods - assign a value to private field.
+getter methods  - access a private value .
+--------------------------------------------------
+Class Diagram - 
+
+here every attribute or method have a + or - 
+sign , where the + sign means a public attribute or method, while - represents a private.
+------------------------------------------------------------------------------------------------------------
+
+Static varibales
+
+Lets imagine if we have 50 objeects of a class Mobile and we want to give them an attribute discount, then we need a loop to iterate throguh them and 
+assign that attribute.. so we can do this using static var.
+
+so we can add the new attribute just below the class definition.
+
+HOW TO ACCESS STATIC VAR -
+
+we can acces them by using classname and dot operator.
+eg)- Mobile.discount
+
+we can also update them using same.
+We can make them private using those two forward-underscores.
+
+NOTE:- since static var are object independent, so we can acces data wothout having any object  and to do that
+we need static getter and setter fun. and we can create them using - 
+
+           @staticmethod
+            ------------------------  //here write your getter or setter fun.
+
+
+
+--------------------------------------------------------------------------------------------
+Class Relationships -
+
+These relationships can be of three types - 
+1-  inheritance      eg. Mobile is a product
+2-  aggregation    eg. Customer has a addres and if customer is no more than another cistomer can have that address
+3-  composition    eg. college has a department , no college means no department
+
+What is AGGREGATION ?
+
+if class A owns class B or 'has a' relation exists , for example customer has an address.
+
+In order to combine two classes ( customer and address ) we need to have an additional attribute (address) in customer class.
+
+Note : the address that we are passing to customer as an attribute is object of class address.
+
+Private Attributes can not be accessed in aggregation directly. 
+
+INHERITANCE
+-------------------------------
+
+while using inheritance , we need to pass base class element to all derived classes.
+
+if a child class has its own constructor then it will be invoke while creating a child class object else 
+the constructor of mother class will be invoked.
+
+We can not directly access the private attributes of mother class in child class.
+
+Method overriding - 
+---------------------------
+
+in case child class has  a method that is already inherited from mother class , then this is called as 
+method overriding.
+
+
+//HOW  TO  USE  MOTHER  CLASS'S  METHOD  EVEN  AFTER  METHOD  OVERRIDING:
+
+We can use 'super()' function ....
+
+syntax:    = =    super().buy()
+
+NOTE - it can not access attributes of mother class. also we can not use it outside the classes 
+
+
+
+
+
+
+
+
+
+
+
+
+Data structures -
+=============================
+Data Structures - 
+-------------------
+Data structures are used to work with data effeciently. 
+
+They are of two types -
+Linear data Structures -
+1)-Array
+2)-Linked list
+3)-Stack
+4)-Queue
+
+Non Linear Data structures - 
+1)- Tree
+2)- Graph
+3)- Hash Table
+
+--------------------------------------------------
+List -
+
+List can be implemented using array or linked list
+
+a)- Array Implementation
+ Array is of fixed capacity however in python we use list which is dynamic and can change its size.
+
+import sys         // -this provides                  capacity,size and space left in the list.
+ 
+NOTE: after creating an empty list it has some capacity for operation like + and - .
+
+List functions-
+----------------
+ls.append(num)           // Appends at last
+ls.insert(2,23)               // inserts 23 at 2 pos
+ls.pop(0)                      // deletes el. at ind 0
+
+
+b)- Linked list implementation
+it consists of nodes, which have two fields - data and the address of next node, they do not need to be in continuous memory like lists.
+
+
+
+
+
+
+
+
+
+
+
+DBMS -
+-----------------------------------------------------------------------------------------------------
+learn classes in Python
+Learn DBMS
+
+
+RDBMS -
+Attributes - columns
+tuples -rows
+cardinality - number of rows
+degree - number of col
+Entity integrity - primary key
+domain integrity - constraint
+Referal integirty - foreign key
+Primary key don't allow null values while 
+unique does.
+Type of relationships: 
+1:1
+1:M
+M:N
+<>    is symbol of not equal to 
+ = this is used for both assignment and equality check in SQL
+salary between 2000 and 3000 has both inclusive
+
+COMMANDS:
+
+create table - to create a table
+drop table table_name
+-----------------------------------------------
+How to give a constraint :
+for example we are giving a unique constraint to a column - 
+
+ContactNo Number(10) CONSTRAINT stud_cno_uk UNIQUE
+-------------------------------------------------
+while creating a foreign key :
+ 
+ContactNo Number(10) CONSTRAINT stud_cno_uk REFERENCES student(Phone)
+
+-------------------------------------------------
+How alter table works ? -
+
+Alter table table_name ADD address Varchar2(20);
+
+we can have modify,Rename column, drop, add  constraint ,drop constraint.
+
+-------------------------------------------------
+
+
+   
