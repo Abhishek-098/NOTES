@@ -242,7 +242,7 @@ eg)- Mobile.discount
 we can also update them using same.
 We can make them private using those two forward-underscores.
 
-NOTE:- since static var are object independent, so we can acces data wothout having any object  and to do that
+NOTE:- since static var are object independent, so we can acces data without having any object  and to do that
 we need static getter and setter fun. and we can create them using - 
 
            @staticmethod
@@ -293,7 +293,27 @@ syntax:    = =    super().buy()
 
 NOTE - it can not access attributes of mother class. also we can not use it outside the classes 
 
+Types of Inheritance - 
+-----------------------------
+1- Single level 
+2- Multi  level
+3- Mulltiple
+4- Hierarchical
 
+ABSTRACT CLASSES - 
+---------------------------------
+
+The classes that do not have any objects are callled abstract classes , like a product class that has two 
+other classes Phone and Shoe, The objects are created for the child classes but not for mother class.
+
+The use of an abstract class is to make child classes from it.
+
+in case we have an @abstractmethod defined in a class then it can not be 
+imported in child class. gives an error.
+
+So if the mother class has an abstract method then child class need to define it 
+again in order to use it.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -342,6 +362,7 @@ ls.pop(0)                      // deletes el. at ind 0
 
 
 b)- Linked list implementation
+---------------------------------------
 it consists of nodes, which have two fields - data and the address of next node, they do not need to be in continuous memory like lists.
 
 
@@ -378,6 +399,19 @@ M:N
  = this is used for both assignment and equality check in SQL
 salary between 2000 and 3000 has both inclusive
 
+Precision in Number data type:
+-----------------------------------------
+Number(3,1)       // max limit 99.9
+Number(3,2)        // max limit 9.99
+
+*Char and varchar2 both can store max size that is provided else they will show error.
+  char takes all the space like char[20] will take 20 spaces even you not use them.
+
+*Integer is also stored as Number(38) inside the database.
+  and when we try inserting a float number in int , it will be stored after rounding.
+  Number datatype is specific to oracle only.
+*BLOB is used to store images,videos etc.
+
 COMMANDS:
 
 create table - to create a table
@@ -400,6 +434,104 @@ Alter table table_name ADD address Varchar2(20);
 we can have modify,Rename column, drop, add  constraint ,drop constraint.
 
 -------------------------------------------------
+
+NOTE : in case one table is parent and other is child (referenced)  , then in
+order to delete the parent table we need to delete child table first.
+
+or we can use CASCADE CONSTRAINTS to delete the parent table first.
+
+------------------------------------------------------
+
+CONSTRAINTS - 
+
+data integrity in database is enforced through constraints.
+Some examples -
+1. NOT NULL
+2. PRIMARY KEY
+3. CHECK
+4. UNIQUE
+5. FOREIGN KEY
+6. DEFAULT
+
+
+ * in case if we have givena default value constraint , and we are passing NULL,
+   then NULL will  be stored instead of default value.
+ * When we are using a primary key constraint then we can not have NULL
+    value in that col.
+ * Unique constraint in a col ,does not allow to enter the same data in two rows,
+    but it allows NULL , else it is same as Primary key.
+
+NORMALIZATION -
+--------------------------
+
+It is the process of reorganizing data in a database to ensure that there is no redundancyof data., 
+and data dependenicies are logical.
+
+SELECT STATEMENT: 
+--------------------------------
+Alias name : SELECT EmpId AS EmployeeID FROM employee;  
+SELECT 30 AS Age;        // this will create a new col age with values 30 to all.
+if we forgot to put ',' 'comma' between two columns while using slelect statement, it will not show any error 
+but it will show first columns values and second coluumns name as attribute as it considers second col as
+alias name,
+
+DISTINCT :
+---------------
+SELECT DISTINCT Dept FROM Employee;
+
+WHERE :
+-------------
+while using where like this example "PM    "  , these spaces does'nt matter in case if datatype is char , in case of varchar they do matter.
+we can use Between instead of AND , & IN instead of OR.
+
+example - where bonus in (2000,3000);
+
+find NULL :
+--------------
+
+we can find that like this : 
+example:  WHERE id IS NULL;
+never use NULL with NOT IN , you will get no result.
+
+LIKE operator: 
+------------------
+
+where ename like 'E%' ;  //  to display names starting from 'E'
+
+Update statemnet can update primary key too.
+
+concat-
+---------
+
+either use 'CONCAT() or || to combine strings.
+
+CASE : -
+-----------
+we use case when we have multiple when in a query.
+
+ORDER BY :
+-----------------
+
+When we use order by NULL values are treated as the highes values, 
+we can make  them lowest by using 'nvl(order by,0)'.
+
+also when we use order by 3 or any other number it shows the col number that we have in the select statement.
+
+UNION - 
+-----------
+ union removes all duplicates from the result while 'union all' doesn't do so.
+
+JOINS -
+----------
+
+Cross joins (cartesian product) just multiply every row of first tablle to every row of second table.
+Inner join requires a condition to be matched after that only , the tables are mutiplied in the same way as cross join.
+Self join means in the same tables with different alias names , else it works the same.
+Left outer join will disply left row if condition is matched from the second table then combine data will be 
+shown else, it will say NULL over those places.
+Right outer join works the same way but for the second table.
+
+
 
 
    
